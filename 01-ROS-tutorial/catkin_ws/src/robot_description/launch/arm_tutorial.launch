@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+
+<!--           arm_tutorial.launch           -->
+<!-- This document describes the rviz launch -->
+<!--       SubT Junior Tutorial Version      -->
+<!--        Last editted: 29/05, 2019        -->
+<!--            Editor: Wolf Chen            -->
+
+<launch>
+
+  <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find arm_description)/urdf/arm_tutorial.xacro'"/>
+
+  <!-- Show in Rviz -->
+  <node name="rviz" pkg="rviz" type="rviz"/>
+
+  <!-- Combine joint values -->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
+
+  <!-- Send joint values -->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+    <param name="use_gui" value="True"/>
+  </node>
+
+</launch>

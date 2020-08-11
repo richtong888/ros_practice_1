@@ -1,0 +1,119 @@
+<?xml version="1.0" ?>
+
+<!--            arm3.urdf.xacro              -->
+<!-- This document describes the robot model -->
+<!--   Machenical Practice Testing Version   -->
+<!--        Last editted: 12/04, 2018        -->
+<!--            Editor: Wolf Chen            -->
+
+<robot name="arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- BGN - Include -->
+  <xacro:include filename="$(find arm_description)/urdf/links_joints.xacro"/>
+  <xacro:include filename="$(find arm_description)/urdf/robot_parameters.xacro"/>
+  <xacro:include filename="$(find arm_description)/urdf/robot_parameters_ext.xacro"/>
+
+
+  <!-- END - Include -->   
+
+  <!-- BGN - Robot Description -->
+
+  <!-- Body -->
+  <arm_cylinder name="${l0b}"
+                mass="${base_mass}"
+                origin_rpy="0 0 0" origin_xyz="0 0 ${base_z}"
+                ixx="1" ixy="0" ixz="0"
+                iyy="1" iyz="0"
+                izz="1"
+                radius="${base_r}" length="${base_l}"
+                color_name="LightGrey" color="${LGrey}"/>
+
+  <arm_joint name="base_joint" type="revolute"
+             axis_xyz="0 0 1"
+             limit="1.57"
+             origin_rpy="0 0 0" origin_xyz="0 0 ${base_l}"
+             parent="${l0b}"
+             child="${m0b}"/>
+
+  <arm_box name="${m0b}"
+           mass="${basem_mass}"
+           origin_rpy="0 0 0" origin_xyz="0 0 ${basem_z}"
+           ixx="1" ixy="0" ixz="0"
+           iyy="1" iyz="0"
+           izz="1"
+           size="${basem_w} ${basem_l} ${basem_h}"
+           color_name="LightGrey" color="${LGrey}"/>
+
+  <arm_joint name="shoulder_joint" type="revolute"
+             axis_xyz="0 1 0"
+             limit="1.57"
+             origin_rpy="0 0 0" origin_xyz="0 0 ${basem_h}"
+             parent="${m0b}"
+             child="${l013}"/>
+
+  <arm_box name="${l013}"
+           mass="${body_mass}"
+           origin_rpy="0 0 0" origin_xyz="0 0 ${body_z_3}"
+           ixx="1" ixy="0" ixz="0"
+           iyy="1" iyz="0"
+           izz="1"
+           size="${body_w} ${body_l} ${body_h_3}"
+           color_name="LightGrey" color="${LGrey}"/>
+
+  <arm_joint name="elbow_joint" type="revolute"
+             axis_xyz="0 1 0"
+             limit="1.57"
+             origin_rpy="0 0 0" origin_xyz="0 0 ${body_h_3}"
+             parent="${l013}"
+             child="${l023}"/>
+
+  <arm_box name="${l023}"
+           mass="${body_mass}"
+           origin_rpy="0 0 0" origin_xyz="0 0 ${body_z_3}"
+           ixx="1" ixy="0" ixz="0"
+           iyy="1" iyz="0"
+           izz="1"
+           size="${body_w} ${body_l} ${body_h_3}"
+           color_name="LightGrey" color="${LGrey}"/>
+
+  <arm_joint name="wrist_joint" type="revolute"
+             axis_xyz="0 1 0"
+             limit="0.785"
+             origin_rpy="0 1.57 0" origin_xyz="0 0 ${body_h_3}"
+             parent="${l023}"
+             child="${l0h2}"/>
+
+  <arm_box name="${l0h2}"
+           mass="${head_mass_2}"
+           origin_rpy="0 0 0" origin_xyz="${head_x_2} 0 0"
+           ixx="1" ixy="0" ixz="0"
+           iyy="1" iyz="0"
+           izz="1"
+           size="${head_w_2} ${head_l_2} ${head_h_2}"
+           color_name="LightGreyTransparent" color="${LGrey_T}"/>
+
+  <!-- End Effecto Description -->
+  <arm_joint_con name="end_effector_motor"
+                 axis_xyz="0 0 1"
+                 origin_rpy="0 0 0" origin_xyz="${drills_x_2} ${drills_y_2} ${drills_z_2}"
+                 parent="${l0h2}"
+                 child="${sd02}"/>
+
+  <arm_cylinder name="${sd02}"
+                mass="${drills_mass}"
+                origin_rpy="0 0 0" origin_xyz="0 0 0"
+                ixx="1" ixy="0" ixz="0"
+                iyy="1" iyz="0"
+                izz="1"
+                radius="${drills_r}" length="${drills_l}"
+                color_name="LightGrey" color="${LGrey}"/>
+
+  <!-- END - Robot Description -->
+
+  <!-- Gazebo Controller Plugins -->
+  <gazebo>
+    <plugin name="ros_control" filename="libgazebo_ros_control.so">
+    </plugin>
+  </gazebo>
+
+</robot>

@@ -1,0 +1,118 @@
+<?xml version="1.0" ?>
+
+<!--              robot_parameters.xacro              -->
+<!-- This document describes the names and parameters -->
+<!--        Machenical Practice Testing Version       -->
+<!--             Last editted: 11/17, 2018            -->
+<!--                 Editor: Wolf Chen                -->
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Names Description -->
+  <xacro:property name="l0b" value="base_link"/>
+  <xacro:property name="l01" value="link_01"/>
+  <xacro:property name="l02" value="link_02"/>
+  <xacro:property name="l0h" value="head_link"/>
+  <xacro:property name="m0b" value="base_motor"/>
+  <xacro:property name="m0d" value="drill_motor"/>
+  <xacro:property name="e0s" value="EE_screw"/>
+  <xacro:property name="e0L" value="EE_L-plate"/>
+  <xacro:property name="edma" value="EE_drill_motor_axis"/>
+  <xacro:property name="e0t" value="EE_turntable"/>
+  <xacro:property name="e0db" value="EE_drill_big"/>
+  <xacro:property name="e0ds" value="EE_drill_small"/>
+  <xacro:property name="e0sd" value="EE_screwdriver"/>
+  <xacro:property name="e0e" value="EE_ending_tube"/>
+
+  <!-- True Names of Motors Description -->
+  <xacro:property name="ground_motor_name" value="MG996R"/>
+  <xacro:property name="base_motor_name" value="ARS-3216HTG+HV"/>
+  <xacro:property name="body_motor_name" value="QDS-15RO"/>
+  <xacro:property name="drill_motor_name" value="2212-1400KV"/>
+
+  <!-- Body Appearances Description -->
+  <xacro:property name="base_r" value="0.65"/>
+  <xacro:property name="base_l" value="0.75"/>
+  <xacro:property name="body_w" value="0.45"/>
+  <xacro:property name="body_l" value="0.50"/>
+  <xacro:property name="body_h" value="2.15"/>
+  <xacro:property name="head_w" value="1.20"/>
+  <xacro:property name="head_l" value="1.36"/>
+  <xacro:property name="head_h" value="2.80"/>
+
+  <!-- End Effector Appearances Description -->
+  <xacro:property name="screw_r" value="0.05"/>
+  <xacro:property name="screw_l" value="1.2"/>
+  <xacro:property name="L_w" value="0.6"/>
+  <xacro:property name="L_l" value="0.55"/>
+  <xacro:property name="L_h" value="0.08"/>
+  <xacro:property name="drillma_r" value="0.04"/>
+  <xacro:property name="drillma_l" value="0.66"/>
+  <xacro:property name="TT_r" value="0.4"/>
+  <xacro:property name="TT_l" value="0.2"/>
+  <xacro:property name="drillb_r" value="0.05"/>
+  <xacro:property name="drillb_l" value="0.89"/>
+  <xacro:property name="drills_r" value="0.05"/>
+  <xacro:property name="drills_l" value="0.82"/>
+  <xacro:property name="SD_r" value="0.05"/>
+  <xacro:property name="SD_l" value="0.87"/>
+  <xacro:property name="ET_r" value="0.0504"/>
+  <xacro:property name="ET_l" value="0.075"/>
+
+  <!-- Motors Description -->
+  <xacro:property name="basem_w" value="0.35"/>
+  <xacro:property name="basem_l" value="0.40"/>
+  <xacro:property name="basem_h" value="0.38"/>
+  <xacro:property name="drillm_r" value="0.14"/>
+  <xacro:property name="drillm_l" value="0.29"/>
+
+  <!-- Body Shape Origins Description -->
+  <xacro:property name="base_z" value="0.375"/>
+  <xacro:property name="basem_z" value="0.19"/>
+  <xacro:property name="body_z" value="1.075"/>
+  <xacro:property name="head_x" value="-0.60"/>
+  <xacro:property name="head_y" value="0.00"/>
+  <xacro:property name="head_z" value="0.40"/>
+
+  <!-- End Effector Origins Description -->
+  <xacro:property name="drillm_x" value="-0.7"/>
+  <xacro:property name="drillm_y" value="-0.06"/>
+  <xacro:property name="drillm_z" value="-0.135"/>
+  <xacro:property name="drillm_zz" value="0.145"/>
+  <xacro:property name="drillma_z" value="0.34"/>
+  <xacro:property name="TT_x" value="-0.394"/>
+  <xacro:property name="TT_y" value="-0.06"/>
+  <xacro:property name="TT_z" value="0.78"/>
+  <xacro:property name="drillb_x" value="-0.306"/>
+  <xacro:property name="drillb_z" value="0.445"/>
+  <xacro:property name="drills_x" value="-0.216"/>
+  <xacro:property name="drills_y" value="0.216"/>
+  <xacro:property name="drills_z" value="0.41"/>
+  <xacro:property name="SD_x" value="-0.216"/>
+  <xacro:property name="SD_y" value="-0.216"/>
+  <xacro:property name="SD_z" value="0.435"/>
+  <xacro:property name="tool_z" value="-0.06"/>
+  <xacro:property name="ET_x" value="-0.7"/>
+  <xacro:property name="ET_y" value="-0.06"/>
+  <xacro:property name="ET_z" value="1.8"/>
+  <xacro:property name="ET_zz" value="0.0375"/>
+
+  <!-- Physical Values Description -->
+  <xacro:property name="base_mass" value="999"/>
+  <xacro:property name="basem_mass" value="1"/>
+  <xacro:property name="body_mass" value="2"/>
+  <xacro:property name="head_mass" value="5"/>
+  <xacro:property name="drillm_mass" value="1"/>
+  <xacro:property name="drillma_mass" value="0.5"/>
+  <xacro:property name="TT_mass" value="0.25"/>
+  <xacro:property name="drillb_mass" value="0.25"/>
+  <xacro:property name="drills_mass" value="0.25"/>
+  <xacro:property name="SD_mass" value="0.25"/>
+  <xacro:property name="ET_mass" value="0.01"/>
+
+  <!-- Color Description -->
+  <xacro:property name="LGrey" value="0.7 0.7 0.7 1.0"/>
+  <xacro:property name="LGrey_T" value="0.7 0.7 0.7 0.5"/>
+  <xacro:property name="Black" value="1 1 1 1"/>
+
+</robot>

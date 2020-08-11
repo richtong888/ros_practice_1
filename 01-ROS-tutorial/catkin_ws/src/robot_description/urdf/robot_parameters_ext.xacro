@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+
+<!--            robot_parameters_ext.xacro            -->
+<!-- This document describes the names and parameters -->
+<!--        Machenical Practice Testing Version       -->
+<!--             Last editted: 11/29, 2018            -->
+<!--                 Editor: Wolf Chen                -->
+
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Arm2 -->
+
+  <!-- Name Description -->
+  <xacro:property name="l0h2" value="head_link_2"/>
+  <xacro:property name="sd02" value="small_drill_2"/>
+  <xacro:property name="l012" value="link_01_2"/>
+  <xacro:property name="l022" value="link_02_2"/>
+
+  <!-- Body Appearance Description -->
+  <xacro:property name="head_w_2" value="0.86"/>
+  <xacro:property name="head_l_2" value="1.05"/>
+  <xacro:property name="head_h_2" value="0.95"/>
+  <xacro:property name="drills_r" value="0.02"/>
+  <xacro:property name="drills_l" value="1.28"/>
+  <xacro:property name="body_h_2" value="1.05"/>
+
+  <!-- Mass Description -->
+  <xacro:property name="head_mass_2" value="2"/>
+  <xacro:property name="drills_mass" value="1.5"/>
+
+  <!-- Origin Description -->
+  <xacro:property name="head_x_2" value="-0.43"/>
+  <xacro:property name="drills_x_2" value="-0.67"/>
+  <xacro:property name="drills_y_2" value="0"/>
+  <xacro:property name="drills_z_2" value="0.165"/>
+  <xacro:property name="body_z_2" value="0.525"/>
+
+  <!-- Arm3 -->
+
+  <!-- Name Description -->
+  <xacro:property name="l013" value="link_01_3"/>
+  <xacro:property name="l023" value="link_02_3"/>
+
+  <!-- Body Appearance Description -->
+  <xacro:property name="body_h_3" value="1.15"/>
+
+  <!-- Origin Description -->
+  <xacro:property name="body_z_3" value="0.575"/>
+
+</robot>

@@ -1,0 +1,8 @@
+prefix=/home/richtong/HCC-Lab-2020/01-ROS-tutorial/catkin_ws/install
+
+Name: tutorial
+Description: Description of tutorial
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: 
